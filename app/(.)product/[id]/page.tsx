@@ -7,7 +7,7 @@ import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 function Modal() {
-  let [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(true);
   const id = useParams().id;
   const [product, setProduct] = useState<Product>();
   const [loading, setLoading] = useState(false);
