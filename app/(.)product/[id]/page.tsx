@@ -2,9 +2,10 @@
 
 import ProductImage from "@/components/ProductImage";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { Star } from "lucide-react"; // Replace HeroIcons with lucide-react
+import { Star } from "lucide-react";
 import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import { useTheme } from "@/context/ThemeContext"; // Import theme context
 
 function Modal() {
   const [isOpen, setIsOpen] = useState(true);
@@ -12,6 +13,7 @@ function Modal() {
   const [product, setProduct] = useState<Product>();
   const [loading, setLoading] = useState(false);
   const router = useRouter();
+  const { theme } = useTheme(); // Get current theme
 
   useEffect(() => {
     async function fetchProduct() {
@@ -30,7 +32,9 @@ function Modal() {
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogContent
         onOpenAutoFocus={(e) => e.preventDefault()} // Prevent auto-focus
-        className="max-w-3xl rounded-lg p-6 bg-white"
+        className={`max-w-3xl rounded-lg p-6 transition-all ${
+          theme === "dark" ? "bg-gray-900 text-white" : "bg-white text-black"
+        }`}
       >
         <DialogHeader>
           <DialogTitle>{product?.title}</DialogTitle>
@@ -64,7 +68,7 @@ function Modal() {
                       ))}
                     </div>
                   )}
-                  <p className="text-blue-600 hover:underline cursor-pointer text-xs">
+                  <p className="text-blue-400 hover:underline cursor-pointer text-xs">
                     See all {product?.rating.count} reviews
                   </p>
                 </div>
@@ -73,12 +77,11 @@ function Modal() {
               </div>
 
               <div className="space-y-3 text-sm">
-                <button className="button w-full bg-blue-600 text-white border-transparent hover:border-blue-600 hover:bg-transparent hover:text-black">
-                  Add to bag
-                </button>
                 <button
                   onClick={() => window.location.reload()}
-                  className="button w-full bg-transparent border-blue-600 hover:bg-blue-600 hover:text-white hover:border-transparent"
+                  className={`button w-full h-12 border-blue-600 bg-blue-600 hover:text-white hover:border-transparent ${
+                    theme === "dark" ? "text-black hover:bg-gray-700" : "text-white"
+                  }`}
                 >
                   View full details
                 </button>

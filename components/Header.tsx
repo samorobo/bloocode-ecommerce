@@ -15,7 +15,6 @@ function Header() {
   const { cart, removeFromCart, totalPrice, cartCount } = useCart();
   const [cartOpen, setCartOpen] = useState(false);
   const { theme, toggleTheme } = useTheme();
-  
   const router = useRouter();
 
   const handleCheckout = () => {
@@ -34,27 +33,35 @@ function Header() {
         />
       </Link>
 
-      <div className="flex items-center space-x-2.5 text-sm">
-        <div className="flex divide-x border-r sm:border-l relative">
-          <Button
-            variant="outline"
-            className="relative flex flex-col gap-y-1.5 h-12 w-12 sm:h-20 sm:w-20 md:h-24 md:w-24 rounded-none"
-            onClick={() => setCartOpen(true)}
-          >
-            <ShoppingBag className="h-6 w-6" />
-            {cartCount > 0 && (
-              <span className="absolute top-0 right-0 flex h-5 w-5 items-center justify-center rounded-full bg-red-500 text-white text-xs font-bold">
-                {cartCount}
-              </span>
-            )}
-            <span className="hidden text-xs font-semibold text-gray-500 sm:block">
-              Cart
+      {/* Wrap the cart button and the theme toggle button in a flex container with a gap */}
+      <div className="flex items-center gap-12">
+        <Button
+          variant="outline"
+          className="relative flex flex-col gap-y-1.5 h-12 w-12 sm:h-20 sm:w-20 md:h-24 md:w-24 rounded-none"
+          onClick={() => setCartOpen(true)}
+        >
+          <ShoppingBag className="h-6 w-6" />
+          {cartCount > 0 && (
+            <span className="absolute top-0 right-0 flex h-5 w-5 items-center justify-center rounded-full bg-red-500 text-white text-xs font-bold">
+              {cartCount}
             </span>
-          </Button>
-          <button onClick={toggleTheme} className="p-2 rounded-md bg-gray-200 dark:bg-gray-700">
-            {theme === "dark" ? <Sun className="h-5 w-5 text-yellow-400" /> : <Moon className="h-5 w-5 text-gray-800" />}
-          </button>
-        </div>
+          )}
+          <span className="hidden text-xs font-semibold text-gray-500 sm:block">
+            Cart
+          </span>
+        </Button>
+
+        {/* Theme Toggle Button */}
+        <button
+          onClick={toggleTheme}
+          className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center"
+        >
+          {theme === "dark" ? (
+            <Sun className="h-5 w-5 text-yellow-400" />
+          ) : (
+            <Moon className="h-5 w-5 text-gray-800" />
+          )}
+        </button>
       </div>
 
       {/* Cart Dialog */}

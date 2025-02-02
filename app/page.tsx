@@ -29,7 +29,7 @@ export default function Home() {
         <input
           type="text"
           placeholder="Search products..."
-          className="border p-2 rounded w-full"
+          className="border border-blue-500 p-2 rounded w-full"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />

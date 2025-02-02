@@ -41,7 +41,7 @@ function Product({ product }: Props) {
             quantity: 1, // ✅ Quantity will be handled in `CartContext.tsx`
           })
         }
-        className="w-full bg-blue-600 text-white mb-32 rounded-lg hover:bg-blue-700 transition duration-300"
+        className="w-full bg-blue-600 h-8 text-white mb-32 rounded-lg hover:bg-blue-700 transition duration-300"
       >
         Add To Cart
       </button>
