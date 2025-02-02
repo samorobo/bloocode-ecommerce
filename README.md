@@ -9,8 +9,7 @@
 
 
 
-## 🌐 Live Demo
-Explore the live demonstration of the project: [Carepulse_On_Vercel](https://careplus-blush.vercel.app/)
+
 
 ## 📝 Description
 **Bloocommerce** is an e-commerce website where user can select products, add to cart and checkout for payment  Built with **Next.js**, **Tailwind CSS**, **Shadcn UI**.
